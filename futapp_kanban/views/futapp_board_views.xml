@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <record model="ir.actions.act_window" id="act_futapp_graph">
+ <field name="name">Horas asignadas</field>
+ <field name="res_model">futapp.gol</field>
+ <field name="view_mode">graph</field>
+ <field name="view_id" ref="futapp_user.view_graph_futapp_gol"/>
+ </record>
+ <record model="ir.actions.act_window" id="act_futapp_pivot">
+ <field name="name">Horas</field>
+ <field name="res_model">futapp.gol</field>
+ <field name="view_mode">pivot</field>
+ <field name="view_id" ref="futapp_user.view_pivot_futapp_gol"/>
+ </record>
+ <record model="ir.actions.act_window" id="act_futapp_list">
+ <field name="name">Tareas</field>
+ <field name="res_model">futapp.gol</field>
+ <field name="view_mode">tree,form</field>
+ </record>
+ <record model="ir.ui.view" id="board_todo_form">
+ <field name="name">Futapp Dashboard Form</field>
+ <field name="model">board.board</field>
+ <field name="type">form</field>
+ <field name="arch" type="xml">
+ <form string="futapp-gol Dashboard">
+ <board style="2-1">
+ <column>
+ <action string="Horas asignadas" name="%(act_todo_graph)d" height="150" width="510"/>
+<action string="Horas" name="%(act_todo_pivot)d"/>
+ </column>
+ <column>
+ <action string="Tareas" name="%(act_todo_list)d"/>
+ </column>
+ </board>
+ </form>
+ </field>
+ </record>
+ <record model="ir.actions.act_window" id="open_board_todo">
+ <field name="name">Futapp DashBoard</field>
+ <field name="res_model">board.board</field>
+ <field name="view_mode">form</field>
+ <field name="usage">menu</field>
+ <field name="view_id" ref="board_todo_form"/>
+ </record>
+ <menuitem name="futapp-gol Dashboard" parent="fut_app.l1_menu_futapp_gol" action="open_board_todo" sequence="1" id="menu_todo_board"/>
+</odoo>

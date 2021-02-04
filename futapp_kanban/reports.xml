@@ -1,0 +1,12 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <report
+ id="report_todo_hours"
+ model="futapp.gol"
+ string="Goles"
+ report_type="qweb-pdf"
+ name="futapp_kanban.report_futapp_hours"
+ attachment_use="False"
+ file="futapp_kanban.report_futapp_hours" />
+</odoo>

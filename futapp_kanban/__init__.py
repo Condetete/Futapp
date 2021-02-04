@@ -1,0 +1,1 @@
+from . import futapp_kanban

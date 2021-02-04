@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <act_window id="action_futapp_colab_gol" name="futapp Gol Colaborative" res_model="futapp.gol" view_mode="tree,form" />
+ <!-- Menu item to open To-do Task list colaborativa -->
+ <menuitem id="menu_futapp_colab_gol" name="futapp Colaborative" parent="futapp_gol.l1_menu_futapp_gol" sequence="30" action="action_futapp_colab_gol" />
+ <record id="view_form_futapp_gol_inherited" model="ir.ui.view">
+<field name="name">Futapp  Collaborative</field>
+ <field name="model">futapp.gol</field>
+ <field name="inherit_id" ref="fut_app.view_form_futapp_gol"/>
+ <field name="arch" type="xml">
+ <field name="name" position="after">
+ <field name="user_id" />
+ </field>
+ <field name="is_done" position="before">
+ <field name="date_deadline" />
+ </field>
+ <field name="name" position="attributes">
+ <attribute name="string">Tengo que </attribute>
+ </field>
+ <field name="active" position="attributes">
+ <attribute name="invisible">1</attribute>
+ </field>
+ <sheet position="after">
+ <div class="oe_chatter">
+ <field name="message_follower_ids" widget="mail_followers" />
+ <field name="message_ids" widget="mail_thread" />
+ </div>
+ </sheet>
+ </field>
+ </record>
+ <record id="view_tree_futapp_gol_inherited" model="ir.ui.view">
+ <field name="name">Fut app tree  User extension</field>
+ <field name="model">futapp.gol</field>
+ <field name="inherit_id" ref="fut_app_gol.view_tree_futapp_gol"/>
+ <field name="arch" type="xml">
+ <field name="name" position="after">
+ <field name="user_id" />
+ </field>
+ <field name="user_id" position="after">
+ <field name="date_deadline" />
+ </field>
+ </field>
+ </record>
+ <record id="view_filter_futapp_gol_inherited" model="ir.ui.view">
+ <field name="name">Futapp Gol tree  User extension</field>
+  <field name="model">futapp.gol</field>    
+  <field name="inherit_id" ref="fut_app.view_filter_futapp_gol"/>
+ <field name="arch" type="xml">
+ <field name="name" position="after">
+ <field name="user_id" />
+ <filter name="filter_my_tasks" string="Mistareas" domain="[('user_id','in',[uid,False])]" />
+ <filter name="filter_not_assigned" string="Sin asignar" domain="[('user_id','=',False)]" />
+ </field>
+ </field>
+ </record>
+<record id="iew_graph_futapp_gol" model ="ir.ui.view">
+<field name="name">Futapp Graph</field>
+<field name="model">futapp.gol</field>
+<field name="arch" type="xml">
+<graph>
+<field name="user_id"/>
+ <field name="horas_estimadas" type="measure"/>
+</graph>
+</field>
+</record>
+<record id="view_pivot_futapp_gol" model="ir.ui.view">
+ <field name="name">Futapp gol Pivot</field>
+<field name="model">futapp.gol</field>
+ <field name="arch" type="xml">
+ <pivot>
+ <field name="user_id" type="col"/>
+ <field name="horas_estimadas" type="row"/>
+</pivot>
+</field>
+</record>
+</odoo>
